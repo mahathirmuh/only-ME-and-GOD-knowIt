@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.mythesis">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".MenuPertama"></activity>
+        <activity android:name=".Daftar_Ruang.RumahTinggal"></activity>
+                <activity android:name=".rumahtinggal.Dapur"></activity>
+                <activity android:name=".rumahtinggal.Garasi"></activity>
+                <activity android:name=".rumahtinggal.Kamar_Mandi"></activity>
+                <activity android:name=".rumahtinggal.Kamar_Tidur"></activity>
+                <activity android:name=".rumahtinggal.Ruang_Kerja"></activity>
+                <activity android:name=".rumahtinggal.Ruang_Makan"></activity>
+                <activity android:name=".rumahtinggal.Ruang_Tamu"></activity>
+                <activity android:name=".rumahtinggal.Teras"></activity>
+
+                <activity android:name=".Daftar_Ruang.RumahSakit"></activity>
+                <activity android:name=".rumahsakit.Ruang_Laboratorium"></activity>
+                <activity android:name=".rumahsakit.Ruang_Operasi"></activity>
+                <activity android:name=".rumahsakit.Ruang_Rawat_Inap"></activity>
+                <activity android:name=".rumahsakit.Ruang_Rehabilitasi"></activity>
+
+                <activity android:name=".Daftar_Ruang.Office"></activity>
+                <activity android:name=".office.Gudang_Arsip"></activity>
+                <activity android:name=".office.Gudang_Arsip_Aktif"></activity>
+                <activity android:name=".office.Ruang_Direktur"></activity>
+                <activity android:name=".office.Ruang_Gambar"></activity>
+                <activity android:name=".office.Ruang_Kerja"></activity>
+                <activity android:name=".office.Ruang_Komputer"></activity>
+                <activity android:name=".office.Ruang_Rapat"></activity>
+
+                <activity android:name=".Daftar_Ruang.RuangIbadah"></activity>
+                <activity android:name=".ibadah.Masjid"></activity>
+                <activity android:name=".ibadah.Gereja"></activity>
+                <activity android:name=".ibadah.Vihara"></activity>
+
+                <activity android:name=".Daftar_Ruang.LPendidikan"></activity>
+                <activity android:name=".pendidikan.Kantin"></activity>
+                <activity android:name=".pendidikan.Ruang_Kelas"></activity>
+                <activity android:name=".pendidikan.Ruang_Kesenian"></activity>
+                <activity android:name=".pendidikan.Ruang_Laboratorium"></activity>
+                <activity android:name=".pendidikan.Ruang_Perpustakaan"></activity>
+
+        <activity android:name=".IDevice"></activity>
+        <activity android:name=".About"></activity>
+
+
+    </application>
+
+</manifest>
