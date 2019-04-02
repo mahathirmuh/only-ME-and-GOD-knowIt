@@ -95,12 +95,6 @@ public class Ruang_Kesenian extends Activity {
                 };
                 lux.postDelayed(mRunnable, 1000);
             }
-//            else if ((+event.values[0]) > 7 && (+event.values[0]) < 20)
-//            {
-//                area.setText("ss ");
-//                status.setText(" ss");
-//                clarification.setText("ss ");
-//            }
             else if ((+event.values[0]) > 5 && (+event.values[0]) <= 150)
             {
                 area.setText(" RUANG KESENIAN ");

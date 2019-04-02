@@ -8,25 +8,51 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.mythesis.R;
 import com.example.mythesis.rumahtinggal.Dapur;
 
 public class Ruang_Laboratorium extends Activity {
-    private TextView lux;
-    private TextView area;
-    private TextView status;
-    private TextView rekomendasi;
+    private TextView tempat, title, lux, area, status, rekomendasi, aktivitas;
+    ImageView bgapp, clover;
+    LinearLayout textsplash, texthome, menus;
+    Animation frombot;
 
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hasil);
+
+        frombot = AnimationUtils.loadAnimation(this, R.anim.frombot);
+
+        bgapp = (ImageView) findViewById(R.id.bgapp);
+        texthome = (LinearLayout) findViewById(R.id.texthome);
+        clover = (ImageView) findViewById(R.id.clover);
+        textsplash = (LinearLayout) findViewById(R.id.textsplash);
+        menus = (LinearLayout) findViewById(R.id.menus);
+
+        bgapp.animate().translationY(-1600).setDuration(800).setStartDelay(300);
+        textsplash.animate().translationY(140).alpha(0).setDuration(800).setStartDelay(600);
+        clover.animate().alpha(0).setDuration(800).setStartDelay(600);
+
+        texthome.startAnimation(frombot);
+        menus.startAnimation(frombot);
+
+        title = (TextView) findViewById(R.id.titleee);
+        title.setText("Laboratorium");
+        tempat = (TextView) findViewById(R.id.tempat);
+        tempat.setText("Laboratorium");
         lux = (TextView) findViewById(R.id.textView);
         area = (TextView) findViewById(R.id.textView2);
         status = (TextView) findViewById(R.id.textView3);
         rekomendasi = (TextView) findViewById(R.id.textView4);
+        aktivitas = (TextView) findViewById(R.id.textView5);
+
         SensorManager mySensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         Sensor LightSensor = mySensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
         if (LightSensor != null)
@@ -69,12 +95,6 @@ public class Ruang_Laboratorium extends Activity {
                 };
                 lux.postDelayed(mRunnable, 1000);
             }
-//            else if ((+event.values[0]) > 7 && (+event.values[0]) < 20)
-//            {
-//                area.setText("ss ");
-//                status.setText(" ss");
-//                clarification.setText("ss ");
-//            }
             else if ((+event.values[0]) > 5 && (+event.values[0]) <= 100)
             {
                 area.setText(" RUANG LABORATORIUM ");
