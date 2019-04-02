@@ -75,7 +75,7 @@ public class Ruang_Tamu extends Activity {
             {
                 lux.setText("" + event.values[0]);
             }
-            if ((+event.values[0]) < 20)
+            if ((+event.values[0]) <= 5)
             {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Ruang_Tamu.this);
                 builder.setTitle("Perhatian");
@@ -100,31 +100,31 @@ public class Ruang_Tamu extends Activity {
 //                status.setText(" ss");
 //                clarification.setText("ss ");
 //            }
-            else if ((+event.values[0]) >= 20 && (+event.values[0]) <= 50)
+            else if ((+event.values[0]) > 5 && (+event.values[0]) <= 24)
             {
                 area.setText(" RUANG TAMU ");
                 status.setText("SANGAT BURUK ");
                 rekomendasi.setText(" Pencahayaan sangat buruk, anda harus mengganti lampu antara 7 watt sampai 20 watt ");
             }
-            else if ((+event.values[0]) > 50 && (+event.values[0]) <= 100)
+            else if ((+event.values[0]) > 24 && (+event.values[0]) <= 48)
             {
                 area.setText(" RUANG TAMU ");
                 status.setText(" BURUK ");
                 rekomendasi.setText(" pencahayaan masih buruk, anda harus mengganti lampu antara 7 watt sampai 20 watt ");
             }
-            else if ((+event.values[0]) >100 && (+event.values[0]) <= 150)
+            else if ((+event.values[0]) > 48 && (+event.values[0]) <= 72)
             {
                 area.setText(" RUANG TAMU");
                 status.setText(" KURANG ");
                 rekomendasi.setText(" pencahayaan masih kurang, ganti dengan lampu antara 7 watt sampai 20 watt ");
             }
-            else if ((+event.values[0]) > 150 && (+event.values[0]) <= 200)
+            else if ((+event.values[0]) > 72 && (+event.values[0]) <= 119)
             {
                 area.setText(" RUANG TAMU ");
                 status.setText(" HAMPIR MEMENUHI SYARAT ");
                 rekomendasi.setText(" pencahayaan masih kurang, ganti dengan lampu antara 7 watt sampai 20 watt");
             }
-            else if ((+event.values[0]) > 200 && (+event.values[0]) <= 250)
+            else if ((+event.values[0]) > 119 && (+event.values[0]) <= 250)
             {
                 area.setText(" RUANG TAMU ");
                 status.setText(" STANDAR ");

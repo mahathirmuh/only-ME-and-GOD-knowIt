@@ -76,7 +76,7 @@ public class Ruang_Laboratorium extends Activity {
             {
                 lux.setText("" + event.values[0]);
             }
-            if ((+event.values[0]) < 20)
+            if ((+event.values[0]) <= 5)
             {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Ruang_Laboratorium.this);
                 builder.setTitle("Perhatian");
@@ -101,31 +101,31 @@ public class Ruang_Laboratorium extends Activity {
 //                status.setText(" ss");
 //                clarification.setText("ss ");
 //            }
-            else if ((+event.values[0]) >= 20 && (+event.values[0]) <= 50)
+            else if ((+event.values[0]) > 5 && (+event.values[0]) <= 100)
             {
                 area.setText(" RUANG LABORATORIUM ");
                 status.setText("SANGAT BURUK ");
                 rekomendasi.setText(" Pencahayaan sangat buruk, anda harus mengganti lampu antara 7 watt sampai 20 watt ");
             }
-            else if ((+event.values[0]) > 50 && (+event.values[0]) <= 100)
+            else if ((+event.values[0]) > 100 && (+event.values[0]) <= 200)
             {
                 area.setText(" RUANG LABORATORIUM ");
                 status.setText(" BURUK ");
                 rekomendasi.setText(" pencahayaan masih buruk, anda harus mengganti lampu antara 7 watt sampai 20 watt ");
             }
-            else if ((+event.values[0]) >100 && (+event.values[0]) <= 150)
+            else if ((+event.values[0]) > 200 && (+event.values[0]) <= 300)
             {
                 area.setText(" RUANG LABORATORIUM ");
                 status.setText(" KURANG ");
                 rekomendasi.setText(" pencahayaan masih kurang, ganti dengan lampu antara 7 watt sampai 20 watt ");
             }
-            else if ((+event.values[0]) > 150 && (+event.values[0]) <= 200)
+            else if ((+event.values[0]) > 300 && (+event.values[0]) <= 400)
             {
                 area.setText(" RUANG LABORATORIUM ");
                 status.setText(" HAMPIR MEMENUHI SYARAT ");
                 rekomendasi.setText(" pencahayaan masih kurang, ganti dengan lampu antara 7 watt sampai 20 watt");
             }
-            else if ((+event.values[0]) > 200 && (+event.values[0]) <= 250)
+            else if ((+event.values[0]) > 400 && (+event.values[0]) <= 500)
             {
                 area.setText(" RUANG LABORATORIUM ");
                 status.setText(" STANDAR ");

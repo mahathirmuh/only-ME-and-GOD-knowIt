@@ -76,7 +76,7 @@ public class Gudang_Arsip_Aktif extends Activity {
             {
                 lux.setText("" + event.values[0]);
             }
-            if ((+event.values[0]) < 20)
+            if ((+event.values[0]) <= 5)
             {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Gudang_Arsip_Aktif.this);
                 builder.setTitle("Perhatian");
@@ -101,31 +101,31 @@ public class Gudang_Arsip_Aktif extends Activity {
 //                status.setText(" ss");
 //                clarification.setText("ss ");
 //            }
-            else if ((+event.values[0]) >= 20 && (+event.values[0]) <= 50)
+            else if ((+event.values[0]) > 5 && (+event.values[0]) <= 60)
             {
                 area.setText(" GUDANG ARSIP AKTIF ");
                 status.setText("SANGAT BURUK ");
                 rekomendasi.setText(" Pencahayaan sangat buruk, anda harus mengganti lampu antara 7 watt sampai 20 watt ");
             }
-            else if ((+event.values[0]) > 50 && (+event.values[0]) <= 100)
+            else if ((+event.values[0]) > 50 && (+event.values[0]) <= 120)
             {
                 area.setText(" GUDANG ARSIP AKTIF ");
                 status.setText(" BURUK ");
                 rekomendasi.setText(" pencahayaan masih buruk, anda harus mengganti lampu antara 7 watt sampai 20 watt ");
             }
-            else if ((+event.values[0]) >100 && (+event.values[0]) <= 150)
+            else if ((+event.values[0]) > 120 && (+event.values[0]) <= 180)
             {
                 area.setText(" GUDANG ARSIP AKTIF ");
-                status.setText(" KURANG ");
+                status.setText(" SEDANG ");
                 rekomendasi.setText(" pencahayaan masih kurang, ganti dengan lampu antara 7 watt sampai 20 watt ");
             }
-            else if ((+event.values[0]) > 150 && (+event.values[0]) <= 200)
+            else if ((+event.values[0]) > 180 && (+event.values[0]) <= 240)
             {
                 area.setText(" GUDANG ARSIP AKTIF ");
                 status.setText(" HAMPIR MEMENUHI SYARAT ");
                 rekomendasi.setText(" pencahayaan masih kurang, ganti dengan lampu antara 7 watt sampai 20 watt");
             }
-            else if ((+event.values[0]) > 200 && (+event.values[0]) <= 250)
+            else if ((+event.values[0]) > 240 && (+event.values[0]) <= 300)
             {
                 area.setText(" GUDANG ARSIP AKTIF ");
                 status.setText(" STANDAR ");

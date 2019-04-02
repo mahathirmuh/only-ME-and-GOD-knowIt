@@ -117,10 +117,10 @@ public class Dapur extends Activity
                 status.setText(" BURUK ");
                 rekomendasi.setText(" pencahayaan masih buruk, anda harus mengganti lampu antara 7 watt sampai 20 watt ");
             }
-            else if ((event.values[0]) >100 && (event.values[0]) <= 150)
+            else if ((event.values[0]) > 100 && (event.values[0]) <= 150)
             {
                 area.setText(" RUANG DAPUR");
-                status.setText(" KURANG ");
+                status.setText(" SEDANG ");
                 rekomendasi.setText(" pencahayaan masih kurang, ganti dengan lampu antara 7 watt sampai 20 watt ");
             }
             else if ((event.values[0]) > 150 && (event.values[0]) <= 200)

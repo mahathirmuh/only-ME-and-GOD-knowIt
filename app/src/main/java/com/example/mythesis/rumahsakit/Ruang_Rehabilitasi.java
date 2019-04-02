@@ -76,7 +76,7 @@ public class Ruang_Rehabilitasi extends Activity {
             {
                 lux.setText("" + event.values[0]);
             }
-            if ((+event.values[0]) < 20)
+            if ((+event.values[0]) <= 5)
             {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Ruang_Rehabilitasi.this);
                 builder.setTitle("Perhatian");
@@ -101,7 +101,7 @@ public class Ruang_Rehabilitasi extends Activity {
 //                status.setText(" ss");
 //                clarification.setText("ss ");
 //            }
-            else if ((+event.values[0]) >= 20 && (+event.values[0]) <= 50)
+            else if ((+event.values[0]) >= 5 && (+event.values[0]) <= 50)
             {
                 area.setText(" RUANG REHABILITASI ");
                 status.setText("SANGAT BURUK ");
@@ -116,7 +116,7 @@ public class Ruang_Rehabilitasi extends Activity {
             else if ((+event.values[0]) >100 && (+event.values[0]) <= 150)
             {
                 area.setText(" RUANG REHABILITASI ");
-                status.setText(" KURANG ");
+                status.setText(" SEDANG ");
                 rekomendasi.setText(" pencahayaan masih kurang, ganti dengan lampu antara 7 watt sampai 20 watt ");
             }
             else if ((+event.values[0]) > 150 && (+event.values[0]) <= 200)

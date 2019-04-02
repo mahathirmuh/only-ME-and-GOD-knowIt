@@ -76,7 +76,7 @@ public class Garasi extends Activity
             {
                 lux.setText("" + event.values[0]);
             }
-            if ((+event.values[0]) < 3)
+            if ((+event.values[0]) <= 5)
             {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Garasi.this);
                 builder.setTitle("Perhatian");
@@ -95,55 +95,42 @@ public class Garasi extends Activity
                 };
                 lux.postDelayed(mRunnable, 1000);
             }
-            else if ((+event.values[0]) > 7 && (+event.values[0]) < 20)
-            {
-                area.setText("UNKNOWN ");
-                status.setText(" TERLALU RENDAH");
-                rekomendasi.setText(" - ");
-            }
-            else if ((+event.values[0]) > 20 && (+event.values[0]) < 50)
+            else if ((event.values[0]) > 5 && (event.values[0]) <= 12)
             {
                 area.setText(" GARASI ");
-                status.setText(" sangat buruk ");
-                rekomendasi.setText(" pencahayaan sangat buruk, anda harus mengganti lampu antara 7 watt sampai 20 watt ");
+                status.setText("SANGAT BURUK ");
+                rekomendasi.setText(" Pencahayaan sangat buruk, anda harus mengganti lampu antara 7 watt sampai 20 watt ");
             }
-            else if ((+event.values[0]) > 60 && (+event.values[0]) < 99)
+            else if ((event.values[0]) > 12 && (event.values[0]) <= 24)
             {
                 area.setText(" GARASI ");
-                status.setText(" buruk ");
+                status.setText(" BURUK ");
                 rekomendasi.setText(" pencahayaan masih buruk, anda harus mengganti lampu antara 7 watt sampai 20 watt ");
             }
-            else if ((+event.values[0]) > 100 && (+event.values[0]) < 118)
+            else if ((event.values[0]) > 24 && (event.values[0]) <= 36)
             {
-                area.setText(" GARASI ");
-                status.setText(" masih buruk ");
-                rekomendasi.setText(" pencahayaan masih buruk, ganti dengan lampu antara 7 watt sampai 20 watt ");
+                area.setText(" GARASI");
+                status.setText(" SEDANG ");
+                rekomendasi.setText(" pencahayaan masih kurang, ganti dengan lampu antara 7 watt sampai 20 watt ");
             }
-            else if ((+event.values[0]) > 119 && (+event.values[0]) < 185)
+            else if ((event.values[0]) > 36 && (event.values[0]) <= 48)
             {
                 area.setText(" GARASI ");
-                status.setText(" range rendah ");
-                rekomendasi.setText(" pencahayaan pada ruangan ini sudah ideal");
+                status.setText(" HAMPIR MEMENUHI SYARAT ");
+                rekomendasi.setText(" pencahayaan masih kurang, ganti dengan lampu antara 7 watt sampai 20 watt");
             }
-            else if ((+event.values[0]) > 186 && (+event.values[0]) < 199)
+            else if ((event.values[0]) > 48 && (event.values[0]) <= 60)
             {
-                area.setText(" GARASI ");
-                status.setText("standar ");
+                area.setText(" GARASI");
+                status.setText(" STANDAR ");
                 rekomendasi.setText(" pencahayaan pada ruangan ini sudah ideal ");
             }
-            else if ((+event.values[0]) > 200 && (+event.values[0]) < 251)
+            else
             {
                 area.setText(" GARASI ");
-                status.setText(" range maksimal ");
-                rekomendasi.setText(" pencahayaan pada ruangan ini sudah ideal");
+                status.setText(" PENERANGAN BERLEBIHAN ");
+                rekomendasi.setText(" TERLALU TERANG ganti dengan lampu antara 7 watt sampai 20 watt");
             }
-            else if ((+event.values[0]) > 252 && (+event.values[0]) < 300)
-            {
-                area.setText(" GARASI ");
-                status.setText(" berlebihan ");
-                rekomendasi.setText(" cahaya telalu terang , ganti lampu anda dengan lampu 7 watt sampai 20 watt ");
-            }
-            else System.out.println();
         }
     };
 
