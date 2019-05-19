@@ -2,12 +2,14 @@ package com.example.mythesis.rumahtinggal;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -15,11 +17,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.mythesis.R;
+import com.example.mythesis.ViewPDF;
 
 public class Garasi extends Activity
 {
     private TextView tempat, title, lux, area, status, rekomendasi, aktivitas;
-    ImageView bgapp, clover;
+    ImageView bgapp, clover, Klik;
     LinearLayout textsplash, texthome, menus;
     Animation frombot;
 
@@ -53,6 +56,15 @@ public class Garasi extends Activity
         rekomendasi = (TextView) findViewById(R.id.textView4);
         aktivitas = (TextView) findViewById(R.id.textView5);
 
+        Klik = (ImageView) findViewById(R.id.viewpdf);
+        Klik.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), ViewPDF.class);
+                startActivity(i);
+            }
+        });
+
         SensorManager mySensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         Sensor LightSensor = mySensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
         if (LightSensor != null)
@@ -76,7 +88,7 @@ public class Garasi extends Activity
             {
                 lux.setText("" + event.values[0]);
             }
-            if ((+event.values[0]) <= 5)
+            if ((+event.values[0]) < 3)
             {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Garasi.this);
                 builder.setTitle("Perhatian");
@@ -95,42 +107,56 @@ public class Garasi extends Activity
                 };
                 lux.postDelayed(mRunnable, 1000);
             }
-            else if ((event.values[0]) > 5 && (event.values[0]) <= 12)
+            else if ((+event.values[0]) > 7 && (+event.values[0]) < 20)
             {
-                area.setText(" GARASI ");
-                status.setText("SANGAT BURUK ");
-                rekomendasi.setText(" Pencahayaan sangat buruk, anda harus mengganti lampu antara 7 watt sampai 20 watt ");
+                area.setText("UNKNOWN ");
+                status.setText(" TERLALU RENDAH");
+                rekomendasi.setText(" - ");
             }
-            else if ((event.values[0]) > 12 && (event.values[0]) <= 24)
+            else if ((+event.values[0]) > 20 && (+event.values[0]) < 50)
             {
                 area.setText(" GARASI ");
-                status.setText(" BURUK ");
+                status.setText(" sangat buruk ");
+                rekomendasi.setText(" pencahayaan sangat buruk, anda harus mengganti lampu antara 7 watt sampai 20 watt ");
+            }
+            else if ((+event.values[0]) > 60 && (+event.values[0]) < 99)
+            {
+                area.setText(" GARASI ");
+                status.setText(" buruk ");
                 rekomendasi.setText(" pencahayaan masih buruk, anda harus mengganti lampu antara 7 watt sampai 20 watt ");
             }
-            else if ((event.values[0]) > 24 && (event.values[0]) <= 36)
-            {
-                area.setText(" GARASI");
-                status.setText(" SEDANG ");
-                rekomendasi.setText(" pencahayaan masih kurang, ganti dengan lampu antara 7 watt sampai 20 watt ");
-            }
-            else if ((event.values[0]) > 36 && (event.values[0]) <= 48)
+            else if ((+event.values[0]) > 100 && (+event.values[0]) < 118)
             {
                 area.setText(" GARASI ");
-                status.setText(" HAMPIR MEMENUHI SYARAT ");
-                rekomendasi.setText(" pencahayaan masih kurang, ganti dengan lampu antara 7 watt sampai 20 watt");
+                status.setText(" masih buruk ");
+                rekomendasi.setText(" pencahayaan masih buruk, ganti dengan lampu antara 7 watt sampai 20 watt ");
             }
-            else if ((event.values[0]) > 48 && (event.values[0]) <= 60)
+            else if ((+event.values[0]) > 119 && (+event.values[0]) < 185)
             {
-                area.setText(" GARASI");
-                status.setText(" STANDAR ");
+                area.setText(" GARASI ");
+                status.setText(" range rendah ");
+                rekomendasi.setText(" pencahayaan pada ruangan ini sudah ideal");
+            }
+            else if ((+event.values[0]) > 186 && (+event.values[0]) < 199)
+            {
+                area.setText(" GARASI ");
+                status.setText("standar ");
                 rekomendasi.setText(" pencahayaan pada ruangan ini sudah ideal ");
+                aktivitas.setText("- Perbaikan Kendaraan");
             }
-            else
+            else if ((+event.values[0]) > 200 && (+event.values[0]) < 251)
             {
                 area.setText(" GARASI ");
-                status.setText(" PENERANGAN BERLEBIHAN ");
-                rekomendasi.setText(" TERLALU TERANG ganti dengan lampu antara 7 watt sampai 20 watt");
+                status.setText(" range maksimal ");
+                rekomendasi.setText(" pencahayaan pada ruangan ini sudah ideal");
             }
+            else if ((+event.values[0]) > 252 && (+event.values[0]) < 300)
+            {
+                area.setText(" GARASI ");
+                status.setText(" berlebihan ");
+                rekomendasi.setText(" cahaya telalu terang , ganti lampu anda dengan lampu 7 watt sampai 20 watt ");
+            }
+            else System.out.println();
         }
     };
 

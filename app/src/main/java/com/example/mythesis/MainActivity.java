@@ -8,7 +8,6 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -26,7 +25,7 @@ MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);//tampilan xml saat ini
+        setContentView(R.layout.activity_main);
 
         frombot = AnimationUtils.loadAnimation(this, R.anim.frombot);
 
@@ -43,30 +42,29 @@ MainActivity extends AppCompatActivity
         texthome.startAnimation(frombot);
         menus.startAnimation(frombot);
 
-
-        Mulai = (CardView) findViewById(R.id.mulai);//variabel tombol view layout dari xml
+        Mulai = (CardView) findViewById(R.id.mulai);
         Mulai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MenuPertama.class); //Nama Class Yang Di Panggil
+                Intent i = new Intent(getApplicationContext(), MenuPertama.class);
                 startActivity(i);
             }
         });
 
-        InfoDevice = (CardView) findViewById(R.id.idevice);//variabel tombol view layout dari xml
+        InfoDevice = (CardView) findViewById(R.id.idevice);
         InfoDevice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),IDevice.class); //Nama Class Yang Di Panggil
+                Intent i = new Intent(getApplicationContext(),IDevice.class);
                 startActivity(i);
             }
         });
 
-        About = (CardView) findViewById(R.id.about);//variabel tombol view layout dari xml
+        About = (CardView) findViewById(R.id.about);
         About.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),About.class); //Nama Class Yang Di Panggil
+                Intent i = new Intent(getApplicationContext(),About.class);
                 startActivity(i);
             }
         });
@@ -81,7 +79,7 @@ MainActivity extends AppCompatActivity
             return;
         }
         this.doubleBackToExitPressedOnceee = true;
-        Toast.makeText(this, "Press 'Back' again to exit tayo", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Press 'Back' again to exit", Toast.LENGTH_SHORT).show();
         new Handler().postDelayed(new Runnable()
         {
             @Override

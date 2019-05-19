@@ -2,12 +2,14 @@ package com.example.mythesis.rumahtinggal;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -15,10 +17,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.mythesis.R;
+import com.example.mythesis.ViewPDF;
 
 public class Ruang_Makan extends Activity {
     private TextView tempat, title, lux, area, status, rekomendasi, aktivitas;
-    ImageView bgapp, clover;
+    ImageView bgapp, clover, Klik;
     LinearLayout textsplash, texthome, menus;
     Animation frombot;
 
@@ -52,6 +55,15 @@ public class Ruang_Makan extends Activity {
         rekomendasi = (TextView) findViewById(R.id.textView4);
         aktivitas = (TextView) findViewById(R.id.textView5);
 
+        Klik = (ImageView) findViewById(R.id.viewpdf);
+        Klik.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), ViewPDF.class);
+                startActivity(i);
+            }
+        });
+
         SensorManager mySensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         Sensor LightSensor = mySensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
         if (LightSensor != null)
@@ -75,7 +87,7 @@ public class Ruang_Makan extends Activity {
             {
                 lux.setText("" + event.values[0]);
             }
-            if ((+event.values[0]) <= 5)
+            if ((+event.values[0]) < 20)
             {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Ruang_Makan.this);
                 builder.setTitle("Perhatian");
@@ -94,31 +106,37 @@ public class Ruang_Makan extends Activity {
                 };
                 lux.postDelayed(mRunnable, 1000);
             }
-            else if ((+event.values[0]) > 5 && (+event.values[0]) <= 24)
+//            else if ((+event.values[0]) > 7 && (+event.values[0]) < 20)
+//            {
+//                area.setText("ss ");
+//                status.setText(" ss");
+//                clarification.setText("ss ");
+//            }
+            else if ((+event.values[0]) >= 20 && (+event.values[0]) <= 50)
             {
                 area.setText(" RUANG MAKAN ");
                 status.setText("SANGAT BURUK ");
                 rekomendasi.setText(" Pencahayaan sangat buruk, anda harus mengganti lampu antara 7 watt sampai 20 watt ");
             }
-            else if ((+event.values[0]) > 24 && (+event.values[0]) <= 48)
+            else if ((+event.values[0]) > 50 && (+event.values[0]) <= 100)
             {
                 area.setText(" RUANG MAKAN ");
                 status.setText(" BURUK ");
                 rekomendasi.setText(" pencahayaan masih buruk, anda harus mengganti lampu antara 7 watt sampai 20 watt ");
             }
-            else if ((+event.values[0]) > 48 && (+event.values[0]) <= 72)
+            else if ((+event.values[0]) >100 && (+event.values[0]) <= 150)
             {
                 area.setText(" RUANG MAKAN");
-                status.setText(" SEDANG ");
+                status.setText(" KURANG ");
                 rekomendasi.setText(" pencahayaan masih kurang, ganti dengan lampu antara 7 watt sampai 20 watt ");
             }
-            else if ((+event.values[0]) > 72 && (+event.values[0]) <= 119)
+            else if ((+event.values[0]) > 150 && (+event.values[0]) <= 200)
             {
                 area.setText(" RUANG MAKAN ");
                 status.setText(" HAMPIR MEMENUHI SYARAT ");
                 rekomendasi.setText(" pencahayaan masih kurang, ganti dengan lampu antara 7 watt sampai 20 watt");
             }
-            else if ((+event.values[0]) > 119 && (+event.values[0]) <= 250)
+            else if ((+event.values[0]) > 200 && (+event.values[0]) <= 250)
             {
                 area.setText(" RUANG MAKAN ");
                 status.setText(" STANDAR ");

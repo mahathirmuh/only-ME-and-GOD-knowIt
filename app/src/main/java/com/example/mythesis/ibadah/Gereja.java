@@ -2,20 +2,28 @@ package com.example.mythesis.ibadah;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.widget.CardView;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.mythesis.IDevice;
 import com.example.mythesis.R;
+import com.example.mythesis.ViewPDF;
 
 public class Gereja extends Activity {
+    ImageView Klik;
     private TextView tempat, title, lux, area, status, rekomendasi, aktivitas;
     ImageView bgapp, clover;
     LinearLayout textsplash, texthome, menus;
@@ -51,6 +59,15 @@ public class Gereja extends Activity {
         rekomendasi = (TextView) findViewById(R.id.textView4);
         aktivitas = (TextView) findViewById(R.id.textView5);
 
+        Klik = (ImageView) findViewById(R.id.viewpdf);
+        Klik.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), ViewPDF.class);
+                startActivity(i);
+            }
+        });
+
         SensorManager mySensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         Sensor LightSensor = mySensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
 
@@ -76,7 +93,7 @@ public class Gereja extends Activity {
             {
                 lux.setText("" + event.values[0]);
             }
-            if ((+event.values[0]) <= 5)
+            if ((+event.values[0]) < 5)
             {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Gereja.this);
                 builder.setTitle("Perhatian");
@@ -95,35 +112,35 @@ public class Gereja extends Activity {
                 };
                 lux.postDelayed(mRunnable, 1000);
             }
-            else if ((+event.values[0]) > 5 && (+event.values[0]) <= 40)
+            else if ((+event.values[0]) >= 5 && (+event.values[0]) <= 50)
             {
                 area.setText("GEREJA ");
                 status.setText("SANGAT BURUK ");
                 rekomendasi.setText("Pencahayaan sangat buruk, anda harus mengganti lampu antara 7 watt sampai 20 watt ");
                 aktivitas.setText("1. bla bla bla\n2. bla bla bla\n3. bla bla bla");
             }
-            else if ((+event.values[0]) > 40 && (+event.values[0]) <= 80)
+            else if ((+event.values[0]) > 50 && (+event.values[0]) <= 100)
             {
                 area.setText("GEREJA ");
                 status.setText("BURUK ");
                 rekomendasi.setText("Pencahayaan masih buruk, anda harus mengganti lampu antara 7 watt sampai 20 watt ");
                 aktivitas.setText("1. bla bla bla\n2. bla bla bla\n3. bla bla bla");
             }
-            else if ((+event.values[0]) > 80 && (+event.values[0]) <= 120)
+            else if ((+event.values[0]) >100 && (+event.values[0]) <= 150)
             {
                 area.setText("GEREJA");
-                status.setText("SEDANG ");
+                status.setText("KURANG ");
                 rekomendasi.setText("Pencahayaan masih kurang, ganti dengan lampu antara 7 watt sampai 20 watt ");
                 aktivitas.setText("1. bla bla bla\n2. bla bla bla\n3. bla bla bla");
             }
-            else if ((+event.values[0]) > 120 && (+event.values[0]) <= 160)
+            else if ((+event.values[0]) > 150 && (+event.values[0]) <= 200)
             {
                 area.setText(" GEREJA ");
                 status.setText("HAMPIR MEMENUHI SYARAT ");
                 rekomendasi.setText("Pencahayaan masih kurang, ganti dengan lampu antara 7 watt sampai 20 watt");
                 aktivitas.setText("1. bla bla bla\n2. bla bla bla\n3. bla bla bla");
             }
-            else if ((+event.values[0]) > 160 && (+event.values[0]) <= 200)
+            else if ((+event.values[0]) > 200 && (+event.values[0]) <= 250)
             {
                 area.setText("GEREJA ");
                 status.setText("STANDAR ");

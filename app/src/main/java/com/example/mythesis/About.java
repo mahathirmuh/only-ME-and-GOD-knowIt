@@ -1,8 +1,6 @@
 package com.example.mythesis;
 
 import android.app.Activity;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -13,10 +11,6 @@ public class About extends Activity {
     ImageView bgapp, clover;
     LinearLayout texthome, menus, textsplash;
     Animation frombot;
-//    private SensorManager mySensorManager;
-//    private Sensor LightSensor;
-
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about);//tampilan xml saat ini
@@ -35,8 +29,5 @@ public class About extends Activity {
 
         texthome.startAnimation(frombot);
         menus.startAnimation(frombot);
-
-//        mySensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-//        LightSensor = mySensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
     }
 }

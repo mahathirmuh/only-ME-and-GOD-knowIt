@@ -2,6 +2,7 @@ package com.example.mythesis.rumahtinggal;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -10,6 +11,7 @@ import android.media.AudioManager;
 import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -17,11 +19,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.mythesis.R;
+import com.example.mythesis.ViewPDF;
 
 public class Dapur extends Activity
 {
     private TextView tempat, title, lux, area, status, rekomendasi, aktivitas;
-    ImageView bgapp, clover;
+    ImageView bgapp, clover, Klik;
     LinearLayout textsplash, texthome, menus;
     Animation frombot;
 
@@ -54,6 +57,15 @@ public class Dapur extends Activity
         status = (TextView) findViewById(R.id.textView3);
         rekomendasi = (TextView) findViewById(R.id.textView4);
         aktivitas = (TextView) findViewById(R.id.textView5);
+
+        Klik = (ImageView) findViewById(R.id.viewpdf);
+        Klik.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), ViewPDF.class);
+                startActivity(i);
+            }
+        });
 
         SensorManager mySensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         Sensor LightSensor = mySensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
@@ -99,12 +111,6 @@ public class Dapur extends Activity
                 };
                 lux.postDelayed(mRunnable, 1000);
             }
-//            else if ((+event.values[0]) > 7 && (+event.values[0]) < 20)
-//            {
-//                area.setText("ss ");
-//                status.setText(" ss");
-//                clarification.setText("ss ");
-//            }
             else if ((event.values[0]) >= 5 && (event.values[0]) <= 50)
             {
                 area.setText(" RUANG DAPUR ");
@@ -117,10 +123,10 @@ public class Dapur extends Activity
                 status.setText(" BURUK ");
                 rekomendasi.setText(" pencahayaan masih buruk, anda harus mengganti lampu antara 7 watt sampai 20 watt ");
             }
-            else if ((event.values[0]) > 100 && (event.values[0]) <= 150)
+            else if ((event.values[0]) >100 && (event.values[0]) <= 150)
             {
                 area.setText(" RUANG DAPUR");
-                status.setText(" SEDANG ");
+                status.setText(" KURANG ");
                 rekomendasi.setText(" pencahayaan masih kurang, ganti dengan lampu antara 7 watt sampai 20 watt ");
             }
             else if ((event.values[0]) > 150 && (event.values[0]) <= 200)
@@ -134,6 +140,7 @@ public class Dapur extends Activity
                 area.setText(" RUANG DAPUR ");
                 status.setText(" STANDAR ");
                 rekomendasi.setText(" pencahayaan pada ruangan ini sudah ideal ");
+                aktivitas.setText("- Cuci Piring\n- Memasak(Menggunakan Alat Tajam\n- Bersih-Bersih Dapur");
             }
             else
             {

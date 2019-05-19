@@ -2,12 +2,14 @@ package com.example.mythesis.office;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -15,11 +17,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.mythesis.R;
+import com.example.mythesis.ViewPDF;
 import com.example.mythesis.rumahsakit.Ruang_Laboratorium;
 
 public class Gudang_Arsip_Aktif extends Activity {
     private TextView tempat, title, lux, area, status, rekomendasi, aktivitas;
-    ImageView bgapp, clover;
+    ImageView bgapp, clover, Klik;
     LinearLayout textsplash, texthome, menus;
     Animation frombot;
 
@@ -53,6 +56,15 @@ public class Gudang_Arsip_Aktif extends Activity {
         rekomendasi = (TextView) findViewById(R.id.textView4);
         aktivitas = (TextView) findViewById(R.id.textView5);
 
+        Klik = (ImageView) findViewById(R.id.viewpdf);
+        Klik.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), ViewPDF.class);
+                startActivity(i);
+            }
+        });
+
         SensorManager mySensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         Sensor LightSensor = mySensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
         if (LightSensor != null)
@@ -76,7 +88,7 @@ public class Gudang_Arsip_Aktif extends Activity {
             {
                 lux.setText("" + event.values[0]);
             }
-            if ((+event.values[0]) <= 5)
+            if ((+event.values[0]) < 20)
             {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Gudang_Arsip_Aktif.this);
                 builder.setTitle("Perhatian");
@@ -101,31 +113,31 @@ public class Gudang_Arsip_Aktif extends Activity {
 //                status.setText(" ss");
 //                clarification.setText("ss ");
 //            }
-            else if ((+event.values[0]) > 5 && (+event.values[0]) <= 60)
+            else if ((+event.values[0]) >= 20 && (+event.values[0]) <= 50)
             {
                 area.setText(" GUDANG ARSIP AKTIF ");
                 status.setText("SANGAT BURUK ");
                 rekomendasi.setText(" Pencahayaan sangat buruk, anda harus mengganti lampu antara 7 watt sampai 20 watt ");
             }
-            else if ((+event.values[0]) > 50 && (+event.values[0]) <= 120)
+            else if ((+event.values[0]) > 50 && (+event.values[0]) <= 100)
             {
                 area.setText(" GUDANG ARSIP AKTIF ");
                 status.setText(" BURUK ");
                 rekomendasi.setText(" pencahayaan masih buruk, anda harus mengganti lampu antara 7 watt sampai 20 watt ");
             }
-            else if ((+event.values[0]) > 120 && (+event.values[0]) <= 180)
+            else if ((+event.values[0]) >100 && (+event.values[0]) <= 150)
             {
                 area.setText(" GUDANG ARSIP AKTIF ");
-                status.setText(" SEDANG ");
+                status.setText(" KURANG ");
                 rekomendasi.setText(" pencahayaan masih kurang, ganti dengan lampu antara 7 watt sampai 20 watt ");
             }
-            else if ((+event.values[0]) > 180 && (+event.values[0]) <= 240)
+            else if ((+event.values[0]) > 150 && (+event.values[0]) <= 200)
             {
                 area.setText(" GUDANG ARSIP AKTIF ");
                 status.setText(" HAMPIR MEMENUHI SYARAT ");
                 rekomendasi.setText(" pencahayaan masih kurang, ganti dengan lampu antara 7 watt sampai 20 watt");
             }
-            else if ((+event.values[0]) > 240 && (+event.values[0]) <= 300)
+            else if ((+event.values[0]) > 200 && (+event.values[0]) <= 250)
             {
                 area.setText(" GUDANG ARSIP AKTIF ");
                 status.setText(" STANDAR ");
